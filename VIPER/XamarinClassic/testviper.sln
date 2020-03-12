@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testviper.Core", "testviper
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testviper.Droid", "testviper.Droid\testviper.Droid.csproj", "{76AB2440-7B1A-4C47-B7C5-B3452030F60D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testviper.iOS", "testviper.iOS\testviper.iOS\testviper.iOS.csproj", "{BE321A1A-655D-4D94-88B6-7026185D8A2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testviper.iOS", "testviper.iOS\testviper.iOS.csproj", "{BE321A1A-655D-4D94-88B6-7026185D8A2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
