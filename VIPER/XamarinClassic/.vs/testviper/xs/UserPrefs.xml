@@ -1,29 +1,29 @@
 ﻿<Properties StartupConfiguration="{76AB2440-7B1A-4C47-B7C5-B3452030F60D}|Default">
   <MonoDevelop.Ide.ItemProperties.testviper.Droid PreferredExecutionTarget="Android.pixel_2_pie_9_0_-_api_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="testviper.Core/Domains/Transfers/Presenter/TransfersPresenter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="testviper.Droid/MainApplication.cs">
     <Files>
-      <File FileName="testviper.Droid/MainApplication.cs" Line="88" Column="103" />
-      <File FileName="testviper.Droid/Domains/Transfers/View/TransfersFirstActivity.cs" Line="67" Column="1" />
-      <File FileName="testviper.Core/Domains/Transfers/Presenter/TransfersPresenter.cs" Line="60" Column="2" />
-      <File FileName="testviper.Core/Domains/Transfers/Interactor/TransfersInteractor.cs" Line="23" Column="38" />
-      <File FileName="testviper.Core/Domains/Transfers/Interactor/ITransfersInteractorOutput.cs" Line="1" Column="1" />
-      <File FileName="testviper.Core/Domains/Transfers/ITransfersDomain.cs" Line="8" Column="19" />
+      <File FileName="testviper.Droid/MainApplication.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node />
+          <Node name="testviper" expanded="True">
+            <Node name="testviper.Core" expanded="True" />
+            <Node name="testviper.Droid" expanded="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.testviper.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.5B1DB9E0-54CE-4AFD-9407-3B0AB8953A83" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>testviper.iOS/testviper.iOS/testviper.iOS.csproj</String>
+  </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/alegil/Documents/POC/testviper/testviper.Core/Domains/Transfers/Presenter/TransfersPresenter.cs" relfile="testviper.Core/Domains/Transfers/Presenter/TransfersPresenter.cs" line="56" column="1" />
-      <Breakpoint file="/Users/alegil/Documents/POC/testviper/testviper.Droid/MainApplication.cs" relfile="testviper.Droid/MainApplication.cs" line="69" column="1" />
+      <Breakpoint file="/Users/alegil/Documents/POC/CleanArchitectureMobile/VIPER/XamarinClassic/testviper.Core/Domains/Transfers/Presenter/TransfersPresenter.cs" relfile="testviper.Core/Domains/Transfers/Presenter/TransfersPresenter.cs" line="56" column="1" />
+      <Breakpoint file="/Users/alegil/Documents/POC/CleanArchitectureMobile/VIPER/XamarinClassic/testviper.Droid/MainApplication.cs" relfile="testviper.Droid/MainApplication.cs" line="69" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
