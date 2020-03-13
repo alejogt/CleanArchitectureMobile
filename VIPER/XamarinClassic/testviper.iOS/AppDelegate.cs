@@ -2,11 +2,6 @@
 using Autofac;
 using Autofac.Builder;
 using Foundation;
-using testviper.Core.Domains.Transfers.Presenter;
-using testviper.Core.Domains.Transfers.Router;
-using testviper.Core.Domains.Transfers.View;
-using testviper.iOS.Domains.Transfers.Router;
-using testviper.iOS.Domains.Transfers.View;
 using UIKit;
 
 namespace testviper.iOS
@@ -18,7 +13,6 @@ namespace testviper.iOS
     {
         #region Attributes
         private UIStoryboard transfersStoryBoard;
-        private IList<ITransfersView> transfersViews;
         #endregion
 
         #region Properties
@@ -33,8 +27,6 @@ namespace testviper.iOS
         public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             transfersStoryBoard = UIStoryboard.FromName("Transfers", null);
-            transfersViews = new List<ITransfersView> { (FirstViewController)transfersStoryBoard.InstantiateViewController("FirstView"), (SecondViewController)transfersStoryBoard.InstantiateViewController("SecondView") };
-            
             CreateInstances();
             return true;
         }
