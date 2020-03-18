@@ -9,7 +9,8 @@ namespace poc.providers.api
     public interface IApiProviderService
     {
         int Timeout { get; set; }
-        IApiProviderRepository Provider(ProviderType providerType, IMobileFirstClient mobileFirstClient = null)
+        ProviderType ProviderType { get; set; }
+        IApiProviderRepository Provider(ProviderType providerType, IMobileFirstClients mobileFirstClient = null);
 
     }
 }

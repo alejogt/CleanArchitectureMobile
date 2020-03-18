@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using poc.providers.api.Exceptions;
 using poc.providers.api.Models;
+using poc.providers.api.Providers.MobileFirst;
 using poc.providers.api.Utils;
 
 namespace poc.providers.api.Providers.AWS
@@ -17,9 +20,9 @@ namespace poc.providers.api.Providers.AWS
         {
         }
 
-        private void InitClient(string baseUrl, string[] optional)
+        private void InitClient(string baseUrl, Dictionary<string, string> headers)
         {
-            if (optional == null || optional.Length == 0) throw new NoOptionalException("Listado de opcional está nulo. Para el AwsProvider se requiere un listado con los datos opcionales: 0 - Token de mobile first.");
+            if (headers == null || headers.Count == 0) throw new NoOptionalException("Listado de opcional está nulo. Para el AwsProvider se requiere un listado con los datos opcionales: 0 - Token de mobile first.");
 
             client.Timeout = this.Timeout == 0 ? TimeSpan.FromMilliseconds(10000) : TimeSpan.FromMilliseconds(this.Timeout);
 
@@ -27,18 +30,18 @@ namespace poc.providers.api.Providers.AWS
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + optional[0]);
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + (headers.ContainsKey("token") ? headers.GetValueOrDefault("token"): string.Empty));
 
         }
 
-        public async Task<ProviderResult> Create<T>(string baseUrl, string url, T input, string[] optional = null)
+        public async Task<ProviderResult> Put(RequestService request)
         {
-            this.InitClient(baseUrl, optional);
+            this.InitClient(request.EndPoint, request.Options);
 
-            string json = JsonFormatter.Serialize<T>(input);
+            string json = JsonFormatter.Serialize(request.Request);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PostAsync(url, content);
+            HttpResponseMessage response = await client.PutAsync(request.EndPoint, content);
             response.EnsureSuccessStatusCode();
 
             var responseJson = await response.Content.ReadAsStringAsync();
@@ -52,13 +55,34 @@ namespace poc.providers.api.Providers.AWS
             return result;
         }
 
-        public async Task<ProviderResult> Delete<T>(string baseUrl, string url, T input, string[] optional = null)
+        public async Task<ProviderResult> Post(RequestService request)
         {
-            this.InitClient(baseUrl, optional);
+            this.InitClient(request.EndPoint, request.Options);
+
+            string json = JsonFormatter.Serialize(request.Request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync(request.EndPoint, content);
+            response.EnsureSuccessStatusCode();
+
+            var responseJson = await response.Content.ReadAsStringAsync();
+
+            var result = new ProviderResult();
+
+            result.Success = true;
+            result.CodeStatus = (int)response.StatusCode;
+            result.Response = responseJson;
+
+            return result;
+        }
+
+        public async Task<ProviderResult> Delete(RequestService  request)
+        {
+            this.InitClient(request.EndPoint, request.Options);
 
             //TODO: Concatenar en la URL el _id del elemento que se quiere eliminar.
 
-            HttpResponseMessage response = await client.DeleteAsync(url);
+            HttpResponseMessage response = await client.DeleteAsync(request.EndPoint);
 
             var responseJson = await response.Content.ReadAsStringAsync();
 
@@ -71,18 +95,13 @@ namespace poc.providers.api.Providers.AWS
             return result;
         }
 
-        public Task<ProviderResult> GetItemByFields<T>(string baseUrl, string url, T input, string[] optional = null)
+        public async Task<ProviderResult> Get(RequestService request)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ProviderResult> Get<T>(string baseUrl, string url, T input, string[] optional = null)
-        {
-            this.InitClient(baseUrl, optional);
+            this.InitClient(request.EndPoint, request.Options);
 
             //TODO: Concatenar en la URL el filtro de datos del listado que se quiere obtener.
 
-            HttpResponseMessage response = await client.GetAsync(url);
+            HttpResponseMessage response = await client.GetAsync(request.EndPoint);
 
             var responseJson = await response.Content.ReadAsStringAsync();
 
@@ -95,7 +114,7 @@ namespace poc.providers.api.Providers.AWS
             return result;
         }
 
-        public Task<ProviderResult> Update<T>(string baseUrl, string url, T input, string[] optional = null)
+        public Task<ProviderResult> Login(ISecurityCheckDelegate checkDelegate, string scopeSecurity, JObject challengeRequest)
         {
             throw new NotImplementedException();
         }

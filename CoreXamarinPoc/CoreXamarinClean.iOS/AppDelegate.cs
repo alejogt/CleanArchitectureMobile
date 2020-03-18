@@ -1,13 +1,13 @@
-﻿using Foundation;
-using UIKit;
-using Autofac.Core;
+﻿using System;
 using Autofac;
 using Autofac.Builder;
+using CoreXamarinPoc.iOS.Domains.Commons.Platform;
+using Foundation;
 using poc.providers.api;
 using poc.providers.api.Providers.MobileFirst;
-using CoreXamarinPoc.iOS.Domains.Commons.Platform;
+using UIKit;
 
-namespace CoreXamarinpoc.iOS
+namespace CoreXamarinClean.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.

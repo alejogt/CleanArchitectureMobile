@@ -15,7 +15,7 @@ namespace poc.providers.api
             
         }
 
-        public IApiProviderRepository Provider(ProviderType providerType, IMobileFirstClient mobileFirstClient = null)
+        public IApiProviderRepository Provider(ProviderType providerType, IMobileFirstClients mobileFirstClient = null)
         {
             IApiProviderRepository apiProviderRepository = null;
             switch (providerType)
@@ -31,5 +31,7 @@ namespace poc.providers.api
         }
 
         public int Timeout { get { return apiProviderRepository.Timeout; } set { apiProviderRepository.Timeout = value; } }
+
+        public ProviderType ProviderType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

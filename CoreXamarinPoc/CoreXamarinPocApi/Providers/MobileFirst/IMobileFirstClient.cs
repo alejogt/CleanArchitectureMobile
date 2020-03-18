@@ -3,7 +3,7 @@ using Worklight;
 
 namespace poc.providers.api.Providers.MobileFirst
 {
-    public interface IMobileFirstClient
+    public interface IMobileFirstClients
     {
         IWorklightClient MobileFirstClient { get; }
     }

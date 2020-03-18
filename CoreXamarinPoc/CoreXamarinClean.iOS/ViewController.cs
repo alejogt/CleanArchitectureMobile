@@ -8,10 +8,11 @@ using poc.providers.api.Providers.MobileFirst;
 using UIKit;
 using CoreXamarinPoc.iOS.Domains.Commons.Entities;
 using System.Collections.Generic;
+using CoreXamarinClean.iOS;
 
 namespace CoreXamarinpoc.iOS
 {
-    public partial class ViewController : UIViewController, ISecurityCheckDelegate
+    public partial class ViewController : UIViewController, IMobileFirstSecurityCheck
     {
         int count = 1;
 
@@ -54,7 +55,7 @@ namespace CoreXamarinpoc.iOS
                 requestService.Request = request;
                 requestService.Scope = "noAuthenticityScope";
 
-                var abc = await apiProviderService.Provider(ProviderType.MobileFirst, AppDelegate.Resolve<IMobileFirstClients>()).Post(requestService);
+                var abc = await apiProviderService.Provider(ProviderType.MobileFirst, AppDelegate.Resolve<IMobileFirstClients>()).Get(requestService);
                 });
             };
 
@@ -66,11 +67,10 @@ namespace CoreXamarinpoc.iOS
 
                 IApiProviderService apiProviderService = AppDelegate.Resolve<IApiProviderService>();
 
-                Task.Run(async () =>
-                {
-                    ProviderResult response = await apiProviderService.Provider(ProviderType.MobileFirst, AppDelegate.Resolve<IMobileFirstClients>())
-                        .Login(this,"UserAuthenticationSecurityCheck_V2", new Newtonsoft.Json.Linq.JObject());
-                });
+                //Task.Run(async () =>
+                //{
+                //    //ProviderResult response = await apiProviderService.Provider(ProviderType.AWS).Authentication("UserAuthenticationSecurityCheck_V2", new Newtonsoft.Json.Linq.JObject());
+                //});
             };
         }
 
@@ -80,12 +80,7 @@ namespace CoreXamarinpoc.iOS
             // Release any cached data, images, etc that aren't in use.		
         }
 
-        public void AuthenticationFailureEventHandle(JObject challenge, FailureType type)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AuthenticationSucessEventHandle(JObject challenge)
+        public Task AddChallenge(string securityCheck, JObject challengeAnswer)
         {
             throw new NotImplementedException();
         }

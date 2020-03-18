@@ -5,8 +5,10 @@
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)co.com.bancolombia.canalesmoviles.apppyme</string>
-		<string>$(AppIdentifierPrefix)$(AppIdentifierPrefix)worklight.group</string>
 		<string>$(AppIdentifierPrefix)worklight.group</string>
+		<string>$(AppIdentifierPrefix)$(AppIdentifierPrefix)worklight.group</string>
 	</array>
+	<key>aps-environment</key>
+	<string>development</string>
 </dict>
 </plist>
