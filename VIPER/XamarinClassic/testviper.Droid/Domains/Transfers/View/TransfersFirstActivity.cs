@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Autofac;
-using testviper.Core.Domains.Transfers.Presenter;
-using testviper.Core.Domains.Transfers.View;
-
-namespace testviper.Droid.Domains.Transfers.View
+﻿namespace testviper.Droid.Domains.Transfers.View
 {
+    using System;
+    using Android.App;
+    using Android.OS;
+    using Android.Widget;
+    using testviper.Core.Domains.Transfers.Presenter;
+    using testviper.Core.Domains.Transfers.View;
+
     [Activity(Label = "TransfersActivity")]
     public class TransfersFirstActivity : Activity, ITransfersFirstView
     {
