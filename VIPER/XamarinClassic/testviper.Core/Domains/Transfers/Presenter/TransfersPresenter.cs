@@ -29,13 +29,12 @@ namespace testviper.Core.Domains.Transfers.Presenter
         #endregion
 
         #region Construct
-        public TransfersPresenter(ITransfersDomain domain, ITransfersRouter router)
+        public TransfersPresenter(ITransfersDomain domain, ITransfersRouter router, ITransfersInteractor interactor)
         {
             this.Container = domain.GetContainer();
-
             this.Router = router;
-
-            this.Interactor = new TransfersInteractor(this);
+            this.Interactor = interactor;
+            this.Interactor.InteractorOutput = this;
         }
         #endregion
 

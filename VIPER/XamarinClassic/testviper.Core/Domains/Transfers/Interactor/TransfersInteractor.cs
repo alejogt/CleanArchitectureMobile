@@ -8,11 +8,6 @@ namespace testviper.Core.Domains.Transfers.Interactor
     {
         public ITransfersInteractorOutput InteractorOutput { get; set; }
 
-        public TransfersInteractor(ITransfersInteractorOutput interactorOutput)
-        {
-            InteractorOutput = interactorOutput;
-        }
-
         public void CreateTitle(string nombre)
         {
             if (nombre.Contains(" "))

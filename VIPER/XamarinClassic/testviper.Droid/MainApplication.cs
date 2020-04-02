@@ -4,6 +4,7 @@ using Android.Runtime;
 using Autofac;
 using Plugin.CurrentActivity;
 using testviper.Core.Domains.Transfers;
+using testviper.Core.Domains.Transfers.Interactor;
 using testviper.Core.Domains.Transfers.Presenter;
 using testviper.Core.Domains.Transfers.Router;
 using testviper.Core.Domains.Transfers.View;
@@ -42,6 +43,7 @@ namespace testviper.Droid
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<TransfersRouter>().As<ITransfersRouter>().SingleInstance();
+            builder.RegisterType<TransfersInteractor>().As<ITransfersInteractor>().SingleInstance();
 
             builder.Register((c, p) =>
             {
