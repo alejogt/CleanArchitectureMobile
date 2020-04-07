@@ -118,5 +118,10 @@ namespace poc.providers.api.Providers.AWS
         {
             throw new NotImplementedException();
         }
+
+        public Task<ProviderResult> Logout(string scopeSecurity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

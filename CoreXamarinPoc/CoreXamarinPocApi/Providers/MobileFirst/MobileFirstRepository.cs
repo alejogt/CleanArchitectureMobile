@@ -72,6 +72,7 @@ namespace poc.providers.api.Providers.MobileFirst
 
             this.SecurityChallenge.ShouldCancel();
             this.client.RegisterChallengeHandler(this.SecurityChallenge);
+            this.client.AuthorizationManager.SetLoginTimeOut(this.Timeout);
 
             try
             {
