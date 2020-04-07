@@ -2,18 +2,19 @@
 
 using System;
 using Autofac;
-using Foundation;
 using testviper.Core.Domains.Transfers.View;
 using UIKit;
 
 namespace testviper.iOS.Domains.Transfers.View
 {
-	public partial class SecondViewController : UIViewController, ITransfersView
+	public partial class SecondViewController : UIViewController, ITransfersSecondView
 	{
-		public SecondViewController (IntPtr handle) : base (handle)
+		public SecondViewController()
 		{
 		}
 
-        public IContainer Container => throw new NotImplementedException();
+		public SecondViewController(IntPtr handle) : base(handle)
+		{
+		}
     }
 }

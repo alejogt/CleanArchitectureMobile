@@ -2,18 +2,24 @@
 
 using System;
 using Autofac;
-using Foundation;
 using testviper.Core.Domains.Transfers.View;
 using UIKit;
 
 namespace testviper.iOS.Domains.Transfers.View
 {
-	public partial class FirstViewController : UIViewController, ITransfersView
+	public partial class FirstViewController : UIViewController, ITransfersFirstView
 	{
-		public FirstViewController (IntPtr handle) : base (handle)
+        public FirstViewController()
+        {
+        }
+
+        public FirstViewController (IntPtr handle) : base (handle)
 		{
 		}
-
-        public IContainer Container => throw new NotImplementedException();
+        
+        public void SetSpacesError()
+        {
+            
+        }
     }
 }

@@ -150,5 +150,11 @@
           <DependentUpon>SecondViewController.cs</DependentUpon>
         </Compile>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\testviper.Core\testviper.Core.csproj">
+        <Project>{3552AA57-CE9E-453D-86ED-430AF9DAF689}</Project>
+        <Name>testviper.Core</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

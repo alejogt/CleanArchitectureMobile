@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using Autofac;
-using Autofac.Builder;
-using Foundation;
-using UIKit;
-
-namespace testviper.iOS
+﻿namespace testviper.iOS
 {
+    using Autofac;
+    using Autofac.Builder;
+    using Foundation;
+    using testviper.Core.Domains.Transfers.Presenter;
+    using testviper.Core.Domains.Transfers.View;
+    using testviper.iOS.Domains.Transfers.View;
+    using UIKit;
+
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
     [Register("AppDelegate")]
@@ -52,8 +54,17 @@ namespace testviper.iOS
         public void CreateInstances()
         {
             ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterType<TransfersRouter>().As<ITransfersRouter>();            
-            builder.RegisterType<TransfersPresenter>().As<ITransfersPresenter>().WithParameter("views", transfersViews).SingleInstance();
+            builder.Register((c, p) =>
+            {
+                return UIApplication.SharedApplication.KeyWindow.RootViewController is FirstViewController viewController ? viewController : transfersStoryBoard.InstantiateViewController("FirstView");
+            }).As<ITransfersFirstView>().SingleInstance();
+
+            builder.Register((c, p) =>
+            {
+                return UIApplication.SharedApplication.KeyWindow.RootViewController is SecondViewController viewController ? viewController : transfersStoryBoard.InstantiateViewController("SecondView");
+            }).As<ITransfersSecondView>().SingleInstance();
+
+            builder.RegisterType<TransfersPresenter>().As<ITransfersPresenter>().WithParameter("domain", this).SingleInstance();
 
             Container = builder.Build(ContainerBuildOptions.None);
         }
